@@ -8,11 +8,19 @@ class SignIn extends React.Component {
     user: "",
   };
 
-  authHandler = async authData => {
-    const {email} = authData;
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.authHandler({ user });
+      }
+    });
+  }
+
+  authHandler = async (authData) => {
+    const { email } = authData.user;
     this.setState({
-        user: email
-    })
+      user: email,
+    });
   };
 
   authenticate = () => {

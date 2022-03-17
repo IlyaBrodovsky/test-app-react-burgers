@@ -6,6 +6,7 @@ import MenuAdmin from "./MenuAdmin";
 import Burger from "./Burger";
 import sampleBurgers from "../sample-burgers";
 import base from "../base";
+import firebase from "firebase/app"
 import SignIn from "./Auth/SignIn";
 
 class App extends React.Component {
@@ -88,6 +89,12 @@ class App extends React.Component {
     // 3 Записать обновленное значение в объект state
     this.setState({ order });
   };
+
+  handleLogout = async () => {
+    await firebase.auth().signOut();
+    window.location.reload();
+  }
+
   render() {
     return (
       <SignIn>
@@ -118,6 +125,7 @@ class App extends React.Component {
             burgers={this.state.burgers}
             updatedBurger={this.updatedBurger}
             deleteBurger={this.deleteBurger}
+            handleLogout={this.handleLogout}
           />
         </div>
       </SignIn>

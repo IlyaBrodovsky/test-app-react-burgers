@@ -7,7 +7,7 @@ const Login = (props) => {
       <nav className="login">
         <h2>Авторизация</h2>
         <p>Введите логин и пароль вашего аккаунта GitHub</p>
-        <button className="github" onClick={() => props.authenticate}>
+        <button className="github" onClick={() => props.authenticate()}>
           Войти
         </button>
       </nav>
@@ -16,7 +16,7 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-    authenticate: PropTypes.func.isRequired
-}
+  authenticate: PropTypes.func.isRequired,
+};
 
-export default Login
+export default Login;
